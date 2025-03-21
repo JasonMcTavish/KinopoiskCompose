@@ -11,13 +11,18 @@ import ru.test.kinopoiskcompose.ui.screens.AllFilmsScreen
 import ru.test.kinopoiskcompose.ui.screens.FilmDetailScreen
 import ru.test.kinopoiskcompose.ui.screens.GalleryScreen
 import ru.test.kinopoiskcompose.ui.screens.HomeScreen
+import ru.test.kinopoiskcompose.ui.screens.IntroScreen
 import ru.test.kinopoiskcompose.ui.screens.PersonDetailScreen
 import ru.test.kinopoiskcompose.ui.screens.ProfileScreen
 import ru.test.kinopoiskcompose.ui.screens.SearchScreen
 
 
 @Composable
-fun NavigationGraph(modifier: Modifier, navController: NavHostController, startDestination:String) {
+fun NavigationGraph(
+    modifier: Modifier,
+    navController: NavHostController,
+    startDestination: String
+) {
     NavHost(
         navController = navController, startDestination = startDestination
     ) {
@@ -32,10 +37,10 @@ fun NavigationGraph(modifier: Modifier, navController: NavHostController, startD
         }
         composable(
             route = "all_films/{category}", arguments =
-            listOf(navArgument(name = "category") {
-                type = NavType.StringType
-                nullable = false
-            })
+                listOf(navArgument(name = "category") {
+                    type = NavType.StringType
+                    nullable = false
+                })
         ) {
             val category = it.arguments?.getString("category")
             if (category != null)
@@ -43,10 +48,10 @@ fun NavigationGraph(modifier: Modifier, navController: NavHostController, startD
         }
         composable(
             route = "film/{id}", arguments =
-            listOf(navArgument(name = "id") {
-                type = NavType.StringType
-                nullable = false
-            })
+                listOf(navArgument(name = "id") {
+                    type = NavType.StringType
+                    nullable = false
+                })
         ) {
             val id = it.arguments?.getString("id")
             if (id != null)
@@ -54,10 +59,10 @@ fun NavigationGraph(modifier: Modifier, navController: NavHostController, startD
         }
         composable(
             route = "gallery/{id}", arguments =
-            listOf(navArgument(name = "id") {
-                type = NavType.StringType
-                nullable = false
-            })
+                listOf(navArgument(name = "id") {
+                    type = NavType.StringType
+                    nullable = false
+                })
         ) {
             val id = it.arguments?.getString("id")
             if (id != null)
@@ -69,10 +74,10 @@ fun NavigationGraph(modifier: Modifier, navController: NavHostController, startD
         }
         composable(
             route = "person/{id}", arguments =
-            listOf(navArgument(name = "id") {
-                type = NavType.StringType
-                nullable = false
-            })
+                listOf(navArgument(name = "id") {
+                    type = NavType.StringType
+                    nullable = false
+                })
         ) {
             val id = it.arguments?.getString("id")
             if (id != null)
@@ -81,6 +86,10 @@ fun NavigationGraph(modifier: Modifier, navController: NavHostController, startD
                     navController = navController,
                     modifier = modifier
                 )
+        }
+
+        composable(route = "intro") {
+            IntroScreen(modifier, navController)
         }
 
     }
