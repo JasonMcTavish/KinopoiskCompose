@@ -17,9 +17,9 @@ import ru.test.kinopoiskcompose.ui.screens.SearchScreen
 
 
 @Composable
-fun NavigationGraph(modifier: Modifier, navController: NavHostController) {
+fun NavigationGraph(modifier: Modifier, navController: NavHostController, startDestination:String) {
     NavHost(
-        navController = navController, startDestination = "home_screen"
+        navController = navController, startDestination = startDestination
     ) {
         composable(route = "home_screen") {
             HomeScreen(modifier = modifier, navController = navController)

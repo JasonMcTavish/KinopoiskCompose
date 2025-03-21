@@ -30,14 +30,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen(modifier = Modifier)
+                    MainScreen(modifier = Modifier, "home_screen")
                 }
             }
         }
     }
 
     @Composable
-    fun MainScreen(modifier: Modifier) {
+    fun MainScreen(modifier: Modifier, startDestination:String) {
         val navController = rememberNavController()
         Scaffold(
             bottomBar = {
@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
                     PaddingValues(0.dp, 0.dp, 0.dp, innerPadding.calculateBottomPadding())
                 )
             ) {
-                NavigationGraph(modifier = modifier, navController)
+                NavigationGraph(modifier = modifier, navController, startDestination)
             }
         }
     }
